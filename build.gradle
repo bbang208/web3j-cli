@@ -19,7 +19,7 @@ mainClassName = 'org.web3j.console.Web3j'
 applicationName = 'web3j'
 
 ext {
-    web3jVersion = '4.9.5'
+    web3jVersion = '4.9.5-v7'
     picocli = '4.6.0'
     slf4jVersion = '1.7.30'
     junitVersion = '5.8.2'
@@ -61,17 +61,18 @@ apply {
 repositories {
     jcenter()
     mavenCentral()
+    maven { url 'https://jitpack.io' }
     maven { url "https://dl.bintray.com/ethereum/maven/" }
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     maven { url 'https://repo.gradle.org/gradle/libs-releases' }
 }
 
-test {
-    useJUnitPlatform()
-    testLogging {
-        events "passed", "skipped", "failed"
-    }
-}
+//test {
+//    useJUnitPlatform()
+//    testLogging {
+//        events "passed", "skipped", "failed"
+//    }
+//}
 
 distZip {
     archiveName "web3j-${project.version}.zip"
@@ -82,13 +83,13 @@ distTar {
 }
 
 dependencies {
-    api "org.web3j:abi:$web3jVersion"
+    api "com.github.bbang208.web3j-android:abi:$web3jVersion"
 
-    implementation "org.web3j:codegen:$web3jVersion",
-            "org.web3j:contracts:$web3jVersion",
-            "org.web3j:core:$web3jVersion",
-            "org.web3j:crypto:$web3jVersion",
-            "org.web3j:hosted-providers:$web3jVersion",
+    implementation "com.github.bbang208.web3j-android:codegen:$web3jVersion",
+            "com.github.bbang208.web3j-android:contracts:$web3jVersion",
+            "com.github.bbang208.web3j-android:core:$web3jVersion",
+            "com.github.bbang208.web3j-android:crypto:$web3jVersion",
+            "com.github.bbang208.web3j-android:hosted-providers:$web3jVersion",
             "io.epirus:epirus-web3j:$web3jEpirusVersion",
             "info.picocli:picocli:$picocli",
             files('libs/smartcheck.jar'),
